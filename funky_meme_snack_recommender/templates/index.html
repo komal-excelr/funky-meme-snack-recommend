@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌈 Funky Meme + Snack Combo Recommender 🍟</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ffe6e6, #e6f7ff, #e6ffe6);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 50px;
+            animation: bgMove 10s infinite linear;
+        }
+
+        @keyframes bgMove {
+            0% {background-position: 0 0;}
+            100% {background-position: 1000px 0;}
+        }
+
+        h1 {
+            color: #ff3399;
+            font-size: 3em;
+            text-shadow: 2px 2px #ffe6f0;
+        }
+
+        select, button {
+            padding: 15px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            border: none;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #ff66cc;
+            color: white;
+            cursor: pointer;
+        }
+
+        .combo-box {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px #aaa;
+            display: inline-block;
+        }
+
+        .combo-box img {
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px #aaa;
+        }
+
+        .caption {
+            font-size: 18px;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        .snack {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍿 Get Your Funky Combo! 😂</h1>
+    <form method="POST">
+        <label for="mood">Pick your current vibe:</label><br>
+        <select name="mood" id="mood" required>
+            <option value="">-- Select Mood --</option>
+            <option value="sad">😭 Sad</option>
+            <option value="dead inside">💀 Dead Inside</option>
+            <option value="exam stress">📚 Exam Stress</option>
+            <option value="happy">🌞 Happy</option>
+        </select><br><br>
+        <button type="submit">Show Me My Combo!</button>
+    </form>
+
+    {% if combo %}
+    <div class="combo-box">
+        <img src="{{ url_for('static', filename='memes/' + combo.meme) }}" alt="Meme Image"><br>
+        <div class="snack">Snack: {{ combo.snack }}</div>
+        <div class="caption">💬 {{ combo.caption }}</div>
+    </div>
+    {% endif %}
+</body>
+</html>
