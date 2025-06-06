@@ -1,6 +1,0 @@
-flask
-flask
-gunicorn
-pandas
-numpy
-
